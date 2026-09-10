@@ -23,8 +23,8 @@ print("E_tot_Trap =", resultT)
 def LR(time,conc):
     E_tot2=0
     n=len(time)-1
-    dx2=(time[19]-time[0])/n
     for i in range(len(conc)-1):
+        dx2 = (time[i+1] - time[i])
         dc2=conc[i]
         E2=dx2*dc2
         E_tot2=E_tot2+E2
@@ -32,14 +32,14 @@ def LR(time,conc):
 resultLR = LR(time, conc)
 print("E_tot_LR =", resultLR)
 
-def CR(time,conc):
+def RR(time,conc):
     E_tot3=0
     n=len(time)-1
-    dx3=(time[19]-time[0])/n
     for i in range(len(conc)-1):
-        dc3=conc[i]+conc[i+1]
-        E3=0.50*dx3*dc3
+        dx3 = (time[i+1] - time[i])
+        dc3=conc[i+1]
+        E3=dx3*dc3
         E_tot3=E_tot3+E3
     return E_tot3
-resultCR = CR(time, conc)
-print("E_tot_CR =", resultCR)
+resultRR = RR(time, conc)
+print("E_tot_RR =", resultRR)
